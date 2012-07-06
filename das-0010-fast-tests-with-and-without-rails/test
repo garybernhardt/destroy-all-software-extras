@@ -31,5 +31,10 @@ if [ $need_rails ]; then
     command="ruby -S bundle exec $command"
 fi
 
+if [ -e '.rvmrc' ]; then
+    rvm=$(grep 'environment_id=".*"' .rvmrc | cut -d '"' -f 2)
+    command="$HOME/.rvm/wrappers/$rvm/$command"
+fi
+
 RAILS_ENV=test $command $filename
 
