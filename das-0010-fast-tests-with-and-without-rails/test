@@ -29,7 +29,9 @@ fi
 
 command='rspec'
 
-if [ $need_rails ]; then
+if [ -f "./zeus.json" ]; then
+    command="zeus $command"
+elif [ $need_rails ]; then
     command="RAILS_ENV=test ruby -S bundle exec $command"
 fi
 
