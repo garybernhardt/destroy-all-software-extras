@@ -30,8 +30,8 @@ fi
 command='rspec'
 
 if [ $need_rails ]; then
-    command="ruby -S bundle exec $command"
+    command="RAILS_ENV=test ruby -S bundle exec $command"
 fi
 
-RAILS_ENV=test $command $filename
+$command $filename
 
