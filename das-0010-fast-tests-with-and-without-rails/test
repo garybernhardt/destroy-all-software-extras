@@ -35,5 +35,12 @@ elif [ $need_rails ]; then
     command="RAILS_ENV=test ruby -S bundle exec $command"
 fi
 
-$command $filename
+command="$command $filename"
+
+if [ -f "./Vagrantfile" ]; then
+    vagrant ssh -c "cd /vagrant && $command && exit"
+else
+    $command
+fi
+
 
