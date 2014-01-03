@@ -19,10 +19,8 @@ if [ $# -gt 0 ]; then # we have args
     # Remove trailing line numbers from filename, e.g. spec/my_spec.rb:33
     grep_filename=`echo $1 | sed 's/:.*$//g'`
 
-    (set +e; grep -r '\bspec_helper\b' $grep_filename) > /dev/null
-    if [ $? -eq 1 ]; then # no match; we have a stand-alone spec
-        need_rails=''
-    fi
+    # if we can't match "spec_helper" in our file we have a stand-alone spec
+    grep -r '\bspec_helper\b' $grep_filename > /dev/null || need_rails=''
 else # we have no args
     filename='spec'
 fi
