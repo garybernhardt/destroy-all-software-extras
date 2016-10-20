@@ -27,9 +27,18 @@ fi
 
 command='rspec'
 
-if [ $need_rails ]; then
-    command="ruby -S bundle exec $command"
+if [ -f "./zeus.json" ]; then
+    command="zeus $command"
+elif [ $need_rails ]; then
+    command="RAILS_ENV=test ruby -S bundle exec $command"
 fi
 
-RAILS_ENV=test $command $filename
+command="$command $filename"
+
+if [ -f "./Vagrantfile" ]; then
+    vagrant ssh -c "cd /vagrant && $command && exit"
+else
+    $command
+fi
+
 
