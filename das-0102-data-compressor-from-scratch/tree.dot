@@ -1,0 +1,21 @@
+digraph {
+  dpi=120
+  ordering=out;
+
+  # abbcccc
+  # 1 a
+  # 2 b
+  # 4 c
+
+  a[label="a\n(n=1)"]
+  b[label="b\n(n=2)"]
+  c[label="c\n(n=4)"]
+
+  n1 [label="(n=3)"]
+  n1 -> a [label=0]
+  n1 -> b [label=1]
+
+  n2 [label="(n=7)"]
+  n2 -> n1 [label=0]
+  n2 -> c [label=1]
+}

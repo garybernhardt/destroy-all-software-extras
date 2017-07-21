@@ -1,0 +1,44 @@
+These are the files used in Destroy All Software production 0102, "Data
+Compressor From Scratch", available at:
+
+    https://www.destroyallsoftware.com/screencasts/catalog/data-compressor-from-scratch
+
+The files are:
+
+- RUNME.sh, which wasn't used in the screencast, but exists to give you an
+  easy way to run this code and see it work. You can execute it via
+  `./RUNME.sh` (without the backquotes).
+
+- garyzip.rb, which is the file written in the screencast.
+
+- bin.rb, which defines BinPacker and BinUnpacker, responsible for packing
+  sequences of int8s, int16s (unused in the screencast), int32s, and arbitrary
+  bits into bytes.
+
+- rendertree.rb, which provides the `render_tree` function used to show the
+  Huffman coding trees visually.
+
+- tree.dot, a manually-created tree diagram shown at the beginning of the
+  screencast. You can render it via `dot -Tpng tree.dot | ./imgcat` (requires
+  iTerm 2 or a terminal implementing iTerm 2's PNG rendering escape codes).
+
+- imgcat, which is distributed by the authors of iTerm 2 but included here for
+  convenience. It allows us to print PNGs to the terminal. It will only work
+  with iTerm 2 or other terminals that implement iTerm 2's PNG rendering
+  escape codes.
+
+DEPENDENCIES
+
+- Ruby 2.4.1 (or probably older or newer versions, but try 2.4.1 if anything
+  goes wrong).
+- For the tree rendering, iTerm 2 version 3.0.15.
+
+SUPPORT
+
+This code is entirely unsupported and is for educational purposes only.
+
+LICENSE
+
+All files here is released under the MIT license, with the exception of
+`imgcat`, whose copyright is held by the authors of iTerm 2. See the file
+`LICENSE`.
